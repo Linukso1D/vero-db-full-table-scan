@@ -1,3 +1,5 @@
+package com;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -10,8 +12,14 @@ public class mainRun {
     public static void main(String args[]) throws SQLException, ClassNotFoundException {
 
         Scanner sc = new Scanner(System.in);
+        System.out.println("Full table scan => db: verodbhost:3306/vero_app");
+        System.out.println("Enter username: ");
+        String username =  sc.nextLine();
+        System.out.println("Enter password: ");
+        String pass = sc.nextLine();
+
         int i = 0;
-        System.out.print("1 - LIKE, 2 - EQUAL  -1 - for keys column: ");
+        System.out.print("1 - LIKE, 2 - EQUAL,  -1 - For keys column: ");
         if (sc.hasNextInt()) {
             i = sc.nextInt();
         } else {
@@ -24,7 +32,7 @@ public class mainRun {
         System.out.println("working...");
 
 
-        mysql handler = new mysql();
+        mysql handler = new mysql(username, pass);
         ArrayList tableList = handler.getTables();
 
         LinkedHashMap<String, ArrayList> tablesField = new LinkedHashMap();

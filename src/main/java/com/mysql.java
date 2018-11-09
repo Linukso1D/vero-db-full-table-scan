@@ -1,3 +1,5 @@
+package com;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -10,10 +12,10 @@ public class mysql {
     private Statement stmt;
     private ResultSet rs;
 
-    public mysql() throws SQLException, ClassNotFoundException {
+    public mysql(String user, String pass) throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver");
         con = DriverManager.getConnection(
-                "jdbc:mysql://verodbhost:3306/vero_app", "root", "root");
+                "jdbc:mysql://verodbhost:3306/vero_app", user, pass);
         stmt = con.createStatement();
     }
 
